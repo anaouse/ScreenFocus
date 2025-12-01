@@ -94,7 +94,7 @@ public partial class Form1 : Form
         workTimer.Interval = nextInterval;
         workTimer.Start();
         minusTimer.Start();
-        UpdateStatus(true, $"{nextInterval / 60000} minutes");
+        UpdateStatus(true, $"{nextInterval / 60000} minutes, remaining: {nextInterval / 60000}");
     }
 
     private void StopFocusCycle()
@@ -107,6 +107,12 @@ public partial class Form1 : Form
     private void CleanFocusCycle()
     {
         StopFocusCycle();
+        int wholeMinutes = wholeMilli / 60000;
+        if(wholeMinutes > 0)
+        {
+            SaveData(wholeMinutes, currentSessionTimestamp);
+            MessageBox.Show($"Save {wholeMinutes} minutes");
+        }
         nextInterval = 0;
         elapseMilli = 0;
         wholeMilli = 0;
