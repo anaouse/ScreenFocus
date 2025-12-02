@@ -117,7 +117,7 @@ public partial class Form1 : Form
         elapseMilli = 0;
         wholeMilli = 0;
         currentSessionTimestamp = 0;
-        
+        ReloadRecords();
         trayIcon.Text = "ScreenFocus - waiting";
     }
 
